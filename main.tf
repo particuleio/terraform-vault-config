@@ -1,12 +1,12 @@
 resource "vault_github_auth_backend" "github" {
   for_each     = var.github_auths
-  organization = each.value.organization
+  organization = try(each.value.organization, each.key)
   path         = try(each.value.path, null)
 }
 
 resource "vault_github_team" "github" {
   for_each = var.github_roles_teams
-  backend  = vault_github_auth_backend.github[each.key].id
+  backend  = vault_github_auth_backend.github[each.value.organization].id
   team     = each.value.team
   policies = try(each.value.policies, null)
 }
