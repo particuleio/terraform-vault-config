@@ -53,11 +53,12 @@ resource "vault_audit" "audit" {
 }
 
 resource "vault_kubernetes_auth_backend_config" "kubernetes_configs" {
-  for_each           = { for k, v in var.auth_backends : k => v if v.type == "kubernetes" }
-  backend            = vault_auth_backend.auth_backends[each.key].path
-  kubernetes_host    = each.value.kubernetes_host
-  kubernetes_ca_cert = try(each.value.kubernetes_ca_cert, null)
-  token_reviewer_jwt = try(each.value.token_reviewer_jwt, null)
+  for_each               = { for k, v in var.auth_backends : k => v if v.type == "kubernetes" }
+  backend                = vault_auth_backend.auth_backends[each.key].path
+  kubernetes_host        = each.value.kubernetes_host
+  kubernetes_ca_cert     = try(each.value.kubernetes_ca_cert, null)
+  token_reviewer_jwt     = try(each.value.token_reviewer_jwt, null)
+  disable_iss_validation = try(each.value.disable_iss_validation, true)
 }
 
 resource "vault_kubernetes_auth_backend_role" "kubernetes" {
