@@ -13,7 +13,7 @@ resource "vault_github_team" "github" {
 
 resource "vault_github_user" "github" {
   for_each = var.github_roles_users
-  backend  = vault_github_auth_backend.github[each.key].id
+  backend  = vault_github_auth_backend.github[each.value.organization].id
   user     = each.value.user
   policies = try(each.value.policues, null)
 }
