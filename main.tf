@@ -70,3 +70,21 @@ resource "vault_kubernetes_auth_backend_role" "kubernetes" {
   token_policies                   = try(each.value.token_policies, null)
   depends_on                       = [vault_policy.policy]
 }
+
+resource "vault_aws_auth_backend_role" "aws" {
+  for_each                        = var.aws_roles
+  backend                         = try(each.value.backend, null)
+  role                            = try(each.value.role, null)
+  auth_type                       = try(each.value.auth_type, null)
+  bound_ami_ids                   = try(each.value.bound_ami_ids, null)
+  bound_account_ids               = try(each.value.bound_account_ids, null)
+  bound_vpc_ids                   = try(each.value.bound_vpc_ids, null)
+  bound_subnet_ids                = try(each.value.bound_subnet_ids, null)
+  bound_iam_role_arns             = try(each.value.bound_iam_role_arns, null)
+  bound_iam_instance_profile_arns = try(each.value.bound_iam_instance_profile_arns, null)
+  inferred_entity_type            = try(each.value.inferred_entity_type, null)
+  inferred_aws_region             = try(each.value.inferred_aws_region, null)
+  token_ttl                       = try(each.value.token_ttl, null)
+  token_max_ttl                   = try(each.value.token_max_ttl, null)
+  token_policies                  = try(each.value.token_policies, null)
+}

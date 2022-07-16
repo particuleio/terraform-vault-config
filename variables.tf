@@ -18,6 +18,11 @@ variable "kubernetes_roles" {
   default = {}
 }
 
+variable "aws_roles" {
+  type    = any
+  default = {}
+}
+
 variable "github_roles_teams" {
   type    = any
   default = {}

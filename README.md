@@ -31,6 +31,7 @@ No modules.
 |------|------|
 | [vault_audit.audit](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/audit) | resource |
 | [vault_auth_backend.auth_backends](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/auth_backend) | resource |
+| [vault_aws_auth_backend_role.aws](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/aws_auth_backend_role) | resource |
 | [vault_generic_secret.secret](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/generic_secret) | resource |
 | [vault_github_auth_backend.github](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/github_auth_backend) | resource |
 | [vault_github_team.github](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/github_team) | resource |
@@ -46,6 +47,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_audits"></a> [audits](#input\_audits) | n/a | `any` | `{}` | no |
 | <a name="input_auth_backends"></a> [auth\_backends](#input\_auth\_backends) | n/a | `any` | `{}` | no |
+| <a name="input_aws_roles"></a> [aws\_roles](#input\_aws\_roles) | n/a | `any` | `{}` | no |
 | <a name="input_github_auths"></a> [github\_auths](#input\_github\_auths) | n/a | `any` | `{}` | no |
 | <a name="input_github_roles_teams"></a> [github\_roles\_teams](#input\_github\_roles\_teams) | n/a | `any` | `{}` | no |
 | <a name="input_github_roles_users"></a> [github\_roles\_users](#input\_github\_roles\_users) | n/a | `any` | `{}` | no |
