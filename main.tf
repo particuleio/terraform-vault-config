@@ -2,6 +2,19 @@ resource "vault_github_auth_backend" "github" {
   for_each     = var.github_auths
   organization = try(each.value.organization, each.key)
   path         = try(each.value.path, null)
+  dynamic "tune" {
+    for_each = try(each.value.tune, {}) != {} ? [1] : []
+    content {
+      default_lease_ttl            = try(each.value.tune.default_lease_ttl, null)
+      max_lease_ttl                = try(each.value.tune.max_lease_ttl, null)
+      audit_non_hmac_response_keys = try(each.value.tune.audit_non_hmac_response_keys, null)
+      audit_non_hmac_request_keys  = try(each.value.tune.audit_non_hmac_request_keys, null)
+      listing_visibility           = try(each.value.tune.listing_visibility, null)
+      passthrough_request_headers  = try(each.value.tune.passthrough_request_headers, null)
+      allowed_response_headers     = try(each.value.tune.allowed_response_headers, null)
+      token_type                   = try(each.value.tune.token_type, "default-service")
+    }
+  }
 }
 
 resource "vault_github_team" "github" {
@@ -42,6 +55,19 @@ resource "vault_auth_backend" "auth_backends" {
   for_each = var.auth_backends
   type     = each.value.type
   path     = try(each.value.path, each.key)
+  dynamic "tune" {
+    for_each = try(each.value.tune, {}) != {} ? [1] : []
+    content {
+      default_lease_ttl            = try(each.value.tune.default_lease_ttl, null)
+      max_lease_ttl                = try(each.value.tune.max_lease_ttl, null)
+      audit_non_hmac_response_keys = try(each.value.tune.audit_non_hmac_response_keys, null)
+      audit_non_hmac_request_keys  = try(each.value.tune.audit_non_hmac_request_keys, null)
+      listing_visibility           = try(each.value.tune.listing_visibility, null)
+      passthrough_request_headers  = try(each.value.tune.passthrough_request_headers, null)
+      allowed_response_headers     = try(each.value.tune.allowed_response_headers, null)
+      token_type                   = try(each.value.tune.token_type, "default-service")
+    }
+  }
 }
 
 resource "vault_audit" "audit" {
