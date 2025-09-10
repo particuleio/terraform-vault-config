@@ -32,7 +32,7 @@ resource "vault_identity_mfa_okta" "okta" {
   api_token       = each.value.api_token
   base_url        = try(each.value.base_url, null)
   primary_email   = try(each.value.primary, true)
-  username_format = try(each.value.username_format, "{{identity.entity.name}}@example.com")
+  username_format = try(each.value.username_format, null)
 }
 
 resource "vault_identity_mfa_login_enforcement" "mfa" {
@@ -44,7 +44,7 @@ resource "vault_identity_mfa_login_enforcement" "mfa" {
   identity_group_ids    = try(each.value.identity_group_ids, null)
   mfa_method_ids = try(each.value.mfa_method_ids, [
     vault_identity_mfa_okta.okta[each.value.organization].method_id,
-    ]
+    ], null
   )
 }
 
