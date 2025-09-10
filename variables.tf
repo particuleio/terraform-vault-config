@@ -13,6 +13,11 @@ variable "secrets" {
   default = {}
 }
 
+variable "secrets_wo" {
+  type    = any
+  default = {}
+}
+
 variable "kubernetes_roles" {
   type    = any
   default = {}
@@ -44,6 +49,21 @@ variable "auth_backends" {
 }
 
 variable "audits" {
+  type    = any
+  default = {}
+}
+
+variable "okta_auths" {
+  type    = any
+  default = {}
+}
+
+variable "okta_groups" {
+  type    = any
+  default = {}
+}
+
+variable "okta_users" {
   type    = any
   default = {}
 }

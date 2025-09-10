@@ -17,6 +17,15 @@ resource "vault_github_auth_backend" "github" {
   }
 }
 
+resource "vault_okta_auth_backend" "okta" {
+  for_each        = var.okta_auths
+  organization    = try(each.value.organization, each.key)
+  base_url        = try(each.value.base_url, null)
+  path            = try(each.value.path, null)
+  token           = try(each.value.token, null)
+  bypass_okta_mfa = try(each.value.bypass_okta_mfa, null)
+}
+
 resource "vault_github_team" "github" {
   for_each = var.github_roles_teams
   backend  = vault_github_auth_backend.github[each.value.organization].id
@@ -28,7 +37,22 @@ resource "vault_github_user" "github" {
   for_each = var.github_roles_users
   backend  = vault_github_auth_backend.github[each.value.organization].id
   user     = each.value.user
-  policies = try(each.value.policues, null)
+  policies = try(each.value.policies, null)
+}
+
+
+resource "vault_okta_auth_backend_group" "okta" {
+  for_each   = var.okta_groups
+  path       = vault_okta_auth_backend.okta[each.value.organization].path
+  group_name = try(each.value.group_name, each.key)
+  policies   = try(each.value.policies, null)
+}
+
+resource "vault_okta_auth_backend_user" "okta" {
+  for_each = var.okta_users
+  path     = vault_okta_auth_backend.okta[each.value.organization].path
+  username = try(each.value.username, each.key)
+  policies = try(each.value.policies, null)
 }
 
 resource "vault_generic_secret" "secret" {
@@ -36,6 +60,14 @@ resource "vault_generic_secret" "secret" {
   path       = each.key
   data_json  = each.value
   depends_on = [vault_mount.mounts]
+}
+
+resource "vault_kv_secret_v2" "secrets_wo" {
+  for_each             = var.secrets_wo
+  mount                = each.value.mount
+  name                 = try(each.value.name, each.key)
+  data_json_wo         = each.value.json
+  data_json_wo_version = each.value.version
 }
 
 resource "vault_policy" "policy" {
