@@ -7,19 +7,19 @@ Repository template for Particule's Terraform module.
 
 ### Examples
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.0 |
-| <a name="requirement_vault"></a> [vault](#requirement\_vault) | >= 3.7 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.11 |
+| <a name="requirement_vault"></a> [vault](#requirement\_vault) | >= 5 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_vault"></a> [vault](#provider\_vault) | >= 3.7 |
+| <a name="provider_vault"></a> [vault](#provider\_vault) | >= 5 |
 
 ## Modules
 
@@ -38,7 +38,11 @@ No modules.
 | [vault_github_user.github](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/github_user) | resource |
 | [vault_kubernetes_auth_backend_config.kubernetes_configs](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/kubernetes_auth_backend_config) | resource |
 | [vault_kubernetes_auth_backend_role.kubernetes](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/kubernetes_auth_backend_role) | resource |
+| [vault_kv_secret_v2.secrets_wo](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/kv_secret_v2) | resource |
 | [vault_mount.mounts](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/mount) | resource |
+| [vault_okta_auth_backend.okta](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/okta_auth_backend) | resource |
+| [vault_okta_auth_backend_group.okta](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/okta_auth_backend_group) | resource |
+| [vault_okta_auth_backend_user.okta](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/okta_auth_backend_user) | resource |
 | [vault_policy.policy](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/policy) | resource |
 
 ## Inputs
@@ -53,10 +57,14 @@ No modules.
 | <a name="input_github_roles_users"></a> [github\_roles\_users](#input\_github\_roles\_users) | n/a | `any` | `{}` | no |
 | <a name="input_kubernetes_roles"></a> [kubernetes\_roles](#input\_kubernetes\_roles) | n/a | `any` | `{}` | no |
 | <a name="input_mounts"></a> [mounts](#input\_mounts) | n/a | `any` | `{}` | no |
+| <a name="input_okta_auths"></a> [okta\_auths](#input\_okta\_auths) | n/a | `any` | `{}` | no |
+| <a name="input_okta_groups"></a> [okta\_groups](#input\_okta\_groups) | n/a | `any` | `{}` | no |
+| <a name="input_okta_users"></a> [okta\_users](#input\_okta\_users) | n/a | `any` | `{}` | no |
 | <a name="input_policies"></a> [policies](#input\_policies) | n/a | `map(any)` | `{}` | no |
 | <a name="input_secrets"></a> [secrets](#input\_secrets) | n/a | `any` | `{}` | no |
+| <a name="input_secrets_wo"></a> [secrets\_wo](#input\_secrets\_wo) | n/a | `any` | `{}` | no |
 
 ## Outputs
 
 No outputs.
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
