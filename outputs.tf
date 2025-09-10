@@ -10,7 +10,8 @@ output "vault_okta_auth_backend" {
 }
 
 output "vault_identity_mfa_okta" {
-  value = vault_identity_mfa_okta.okta
+  value     = vault_identity_mfa_okta.okta
+  sensitive = true
 }
 
 output "vault_github_team" {
