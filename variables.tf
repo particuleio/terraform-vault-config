@@ -67,3 +67,13 @@ variable "okta_users" {
   type    = any
   default = {}
 }
+
+variable "okta_mfas" {
+  type    = any
+  default = {}
+}
+
+variable "mfa_enforcements" {
+  type    = any
+  default = {}
+}
