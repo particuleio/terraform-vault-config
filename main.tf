@@ -26,6 +26,28 @@ resource "vault_okta_auth_backend" "okta" {
   bypass_okta_mfa = try(each.value.bypass_okta_mfa, null)
 }
 
+resource "vault_identity_mfa_okta" "okta" {
+  for_each        = var.okta_mfas
+  org_name        = try(each.value.org_name, each.key)
+  api_token       = each.value.api_token
+  base_url        = try(each.value.base_url, null)
+  primary_email   = try(each.value.primary, true)
+  username_format = try(each.value.username_format, "{{identity.entity.name}}@example.com")
+}
+
+resource "vault_identity_mfa_login_enforcement" "mfa" {
+  for_each              = var.mfa_enforcements
+  name                  = try(each.value.name, each.key)
+  auth_method_accessors = try(each.value.auth_method_accessors, null)
+  auth_method_types     = try(each.value.auth_method_types, null)
+  identity_entity_ids   = try(each.value.identity_entity_ids, null)
+  identity_group_ids    = try(each.value.identity_group_ids, null)
+  mfa_method_ids = try(each.value.mfa_method_ids, [
+    vault_identity_mfa_okta.okta[each.value.organization].method_id,
+    ]
+  )
+}
+
 resource "vault_github_team" "github" {
   for_each = var.github_roles_teams
   backend  = vault_github_auth_backend.github[each.value.organization].id
