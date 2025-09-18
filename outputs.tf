@@ -56,11 +56,6 @@ output "vault_audit" {
   value = vault_audit.audit
 }
 
-output "vault_kubernetes_auth_backend_config" {
-  value     = vault_kubernetes_auth_backend_config.kubernetes_configs
-  sensitive = true
-}
-
 output "vault_kubernetes_auth_backend_role" {
   value = vault_kubernetes_auth_backend_role.kubernetes
 }
@@ -71,8 +66,4 @@ output "vault_aws_auth_backend_role" {
 
 output "vault_jwt_auth_backend" {
   value = vault_jwt_auth_backend.jwt_auths
-}
-
-output "vault_jwt_auth_backend_role" {
-  value = vault_jwt_auth_backend_role.jwt_auth_roles
 }

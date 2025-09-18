@@ -85,8 +85,6 @@ No modules.
 | <a name="output_vault_github_user"></a> [vault\_github\_user](#output\_vault\_github\_user) | n/a |
 | <a name="output_vault_identity_mfa_okta"></a> [vault\_identity\_mfa\_okta](#output\_vault\_identity\_mfa\_okta) | n/a |
 | <a name="output_vault_jwt_auth_backend"></a> [vault\_jwt\_auth\_backend](#output\_vault\_jwt\_auth\_backend) | n/a |
-| <a name="output_vault_jwt_auth_backend_role"></a> [vault\_jwt\_auth\_backend\_role](#output\_vault\_jwt\_auth\_backend\_role) | n/a |
-| <a name="output_vault_kubernetes_auth_backend_config"></a> [vault\_kubernetes\_auth\_backend\_config](#output\_vault\_kubernetes\_auth\_backend\_config) | n/a |
 | <a name="output_vault_kubernetes_auth_backend_role"></a> [vault\_kubernetes\_auth\_backend\_role](#output\_vault\_kubernetes\_auth\_backend\_role) | n/a |
 | <a name="output_vault_kv_secret_v2"></a> [vault\_kv\_secret\_v2](#output\_vault\_kv\_secret\_v2) | n/a |
 | <a name="output_vault_mount"></a> [vault\_mount](#output\_vault\_mount) | n/a |
