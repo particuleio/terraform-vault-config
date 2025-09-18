@@ -48,6 +48,68 @@ resource "vault_identity_mfa_login_enforcement" "mfa" {
   )
 }
 
+#############
+# OIDC/JWT #
+############
+
+resource "vault_jwt_auth_backend" "jwt_auths" {
+  for_each               = var.jwt_auths
+  path                   = try(each.value.path, each.key, "oidc")
+  disable_remount        = try(each.value.disable_remount, null)
+  type                   = try(each.value.type, "oidc")
+  description            = try(each.value.description, null)
+  oidc_discovery_url     = try(each.value.oidc_discovery_url, null)
+  oidc_discovery_ca_pem  = try(each.value.oidc_discovery_ca_pem, null)
+  oidc_client_id         = try(each.value.oidc_client_id, null)
+  oidc_client_secret     = try(each.value.oidc_client_secret, null)
+  oidc_response_mode     = try(each.value.oidc_response_mode, null)
+  oidc_response_types    = try(each.value.oidc_response_types, null)
+  jwks_url               = try(each.value.jwks_url, null)
+  jwks_ca_pem            = try(each.value.jwks_ca_pem, null)
+  jwks_pairs             = try(each.value.jwks_pairs, null)
+  jwt_validation_pubkeys = try(each.value.jwt_validation_pubkeys, null)
+  bound_issuer           = try(each.value.bound_issuer, null)
+  jwt_supported_algs     = try(each.value.jwt_supported_algs, null)
+  default_role           = try(each.value.default_role, null)
+  provider_config        = try(each.value.provider_config, null)
+  local                  = try(each.value.locale, null)
+  namespace_in_state     = try(each.value.namespace_in_state, null)
+
+  dynamic "tune" {
+    for_each = try(each.value.tune, {}) != {} ? [1] : []
+    content {
+      default_lease_ttl            = try(each.value.tune.default_lease_ttl, "4h")
+      max_lease_ttl                = try(each.value.tune.max_lease_ttl, "4h")
+      audit_non_hmac_response_keys = try(each.value.tune.audit_non_hmac_response_keys, null)
+      audit_non_hmac_request_keys  = try(each.value.tune.audit_non_hmac_request_keys, null)
+      listing_visibility           = try(each.value.tune.listing_visibility, "unauth")
+      passthrough_request_headers  = try(each.value.tune.passthrough_request_headers, null)
+      allowed_response_headers     = try(each.value.tune.allowed_response_headers, null)
+      token_type                   = try(each.value.tune.token_type, "default-service")
+    }
+  }
+}
+
+resource "vault_jwt_auth_backend_role" "jwt_auth_roles" {
+  for_each                = var.jwt_roles
+  backend                 = each.value.backend
+  role_name               = try(each.value.role_name, each.key)
+  role_type               = try(each.value.role_type, "oidc")
+  token_policies          = try(each.value.token_policies, null)
+  bound_audiences         = try(each.value.bound_audiences, null)
+  bound_claims            = try(each.value.bound_claims, null)
+  user_claim              = try(each.value.user_claim, "email")
+  groups_claim            = try(each.value.groups_claim, "groups")
+  claim_mappings          = try(each.value.claim_mappings, null)
+  oidc_scopes             = try(each.value.oidc_scopes, ["openid", "profile", "email", "groups"])
+  allowed_redirect_uris   = try(each.value.allowed_redirect_uris, null)
+  user_claim_json_pointer = try(each.value.user_claim_json_pointer, null)
+  verbose_oidc_logging    = try(each.value.verbose_oidc_logging, null)
+  depends_on = [
+    vault_jwt_auth_backend.jwt_auths
+  ]
+}
+
 resource "vault_github_team" "github" {
   for_each = var.github_roles_teams
   backend  = vault_github_auth_backend.github[each.value.organization].id
