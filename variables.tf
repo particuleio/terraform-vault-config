@@ -87,3 +87,13 @@ variable "jwt_roles" {
   type    = any
   default = {}
 }
+
+variable "identity_groups" {
+  type    = any
+  default = {}
+}
+
+variable "identity_group_aliases" {
+  type    = any
+  default = {}
+}
