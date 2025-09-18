@@ -77,3 +77,13 @@ variable "mfa_enforcements" {
   type    = any
   default = {}
 }
+
+variable "jwt_auths" {
+  type    = any
+  default = {}
+}
+
+variable "jwt_roles" {
+  type    = any
+  default = {}
+}

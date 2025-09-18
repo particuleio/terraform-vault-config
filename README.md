@@ -38,6 +38,8 @@ No modules.
 | [vault_github_user.github](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/github_user) | resource |
 | [vault_identity_mfa_login_enforcement.mfa](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_mfa_login_enforcement) | resource |
 | [vault_identity_mfa_okta.okta](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_mfa_okta) | resource |
+| [vault_jwt_auth_backend.jwt_auths](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/jwt_auth_backend) | resource |
+| [vault_jwt_auth_backend_role.jwt_auth_roles](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/jwt_auth_backend_role) | resource |
 | [vault_kubernetes_auth_backend_config.kubernetes_configs](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/kubernetes_auth_backend_config) | resource |
 | [vault_kubernetes_auth_backend_role.kubernetes](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/kubernetes_auth_backend_role) | resource |
 | [vault_kv_secret_v2.secrets_wo](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/kv_secret_v2) | resource |
@@ -57,6 +59,8 @@ No modules.
 | <a name="input_github_auths"></a> [github\_auths](#input\_github\_auths) | n/a | `any` | `{}` | no |
 | <a name="input_github_roles_teams"></a> [github\_roles\_teams](#input\_github\_roles\_teams) | n/a | `any` | `{}` | no |
 | <a name="input_github_roles_users"></a> [github\_roles\_users](#input\_github\_roles\_users) | n/a | `any` | `{}` | no |
+| <a name="input_jwt_auths"></a> [jwt\_auths](#input\_jwt\_auths) | n/a | `any` | `{}` | no |
+| <a name="input_jwt_roles"></a> [jwt\_roles](#input\_jwt\_roles) | n/a | `any` | `{}` | no |
 | <a name="input_kubernetes_roles"></a> [kubernetes\_roles](#input\_kubernetes\_roles) | n/a | `any` | `{}` | no |
 | <a name="input_mfa_enforcements"></a> [mfa\_enforcements](#input\_mfa\_enforcements) | n/a | `any` | `{}` | no |
 | <a name="input_mounts"></a> [mounts](#input\_mounts) | n/a | `any` | `{}` | no |
@@ -80,6 +84,8 @@ No modules.
 | <a name="output_vault_github_team"></a> [vault\_github\_team](#output\_vault\_github\_team) | n/a |
 | <a name="output_vault_github_user"></a> [vault\_github\_user](#output\_vault\_github\_user) | n/a |
 | <a name="output_vault_identity_mfa_okta"></a> [vault\_identity\_mfa\_okta](#output\_vault\_identity\_mfa\_okta) | n/a |
+| <a name="output_vault_jwt_auth_backend"></a> [vault\_jwt\_auth\_backend](#output\_vault\_jwt\_auth\_backend) | n/a |
+| <a name="output_vault_jwt_auth_backend_role"></a> [vault\_jwt\_auth\_backend\_role](#output\_vault\_jwt\_auth\_backend\_role) | n/a |
 | <a name="output_vault_kubernetes_auth_backend_config"></a> [vault\_kubernetes\_auth\_backend\_config](#output\_vault\_kubernetes\_auth\_backend\_config) | n/a |
 | <a name="output_vault_kubernetes_auth_backend_role"></a> [vault\_kubernetes\_auth\_backend\_role](#output\_vault\_kubernetes\_auth\_backend\_role) | n/a |
 | <a name="output_vault_kv_secret_v2"></a> [vault\_kv\_secret\_v2](#output\_vault\_kv\_secret\_v2) | n/a |
