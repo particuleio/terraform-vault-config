@@ -63,7 +63,3 @@ output "vault_kubernetes_auth_backend_role" {
 output "vault_aws_auth_backend_role" {
   value = vault_aws_auth_backend_role.aws
 }
-
-output "vault_jwt_auth_backend" {
-  value = vault_jwt_auth_backend.jwt_auths
-}
