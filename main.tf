@@ -48,6 +48,35 @@ resource "vault_identity_mfa_login_enforcement" "mfa" {
   )
 }
 
+##############
+# Identities #
+##############
+
+resource "vault_identity_group" "identity_groups" {
+  for_each                   = var.identity_groups
+  name                       = try(each.value.name, each.key)
+  type                       = try(each.value.type, null)
+  policies                   = try(each.value.policies, null)
+  metadata                   = try(each.value.metadata, null)
+  member_entity_ids          = try(each.value.member_entity_ids, null)
+  member_group_ids           = try(each.value.member_group_ids, null)
+  external_policies          = try(each.value.external_policies, null)
+  external_member_entity_ids = try(each.value.external_member_entity_ids, null)
+  external_member_group_ids  = try(each.value.external_member_group_ids, null)
+}
+
+data "vault_auth_backend" "auth_backend_identities" {
+  for_each = var.identity_group_aliases
+  path     = each.value.auth_backend
+}
+
+resource "vault_identity_group_alias" "identity_group_aliases" {
+  for_each       = var.identity_group_aliases
+  name           = try(each.value.name, each.key)
+  mount_accessor = try(each.value.mount_accessor, data.vault_auth_backend.auth_backend_identities[try(each.value.name, each.key)].accessor)
+  canonical_id   = try(each.value.canonical_id, vault_identity_group.identity_groups[try(each.value.name, each.key)].id)
+}
+
 #############
 # OIDC/JWT #
 ############

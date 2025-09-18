@@ -36,6 +36,8 @@ No modules.
 | [vault_github_auth_backend.github](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/github_auth_backend) | resource |
 | [vault_github_team.github](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/github_team) | resource |
 | [vault_github_user.github](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/github_user) | resource |
+| [vault_identity_group.identity_groups](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_group) | resource |
+| [vault_identity_group_alias.identity_group_aliases](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_group_alias) | resource |
 | [vault_identity_mfa_login_enforcement.mfa](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_mfa_login_enforcement) | resource |
 | [vault_identity_mfa_okta.okta](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/identity_mfa_okta) | resource |
 | [vault_jwt_auth_backend.jwt_auths](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/jwt_auth_backend) | resource |
@@ -48,6 +50,7 @@ No modules.
 | [vault_okta_auth_backend_group.okta](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/okta_auth_backend_group) | resource |
 | [vault_okta_auth_backend_user.okta](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/okta_auth_backend_user) | resource |
 | [vault_policy.policy](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/policy) | resource |
+| [vault_auth_backend.auth_backend_identities](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/auth_backend) | data source |
 
 ## Inputs
 
@@ -59,6 +62,8 @@ No modules.
 | <a name="input_github_auths"></a> [github\_auths](#input\_github\_auths) | n/a | `any` | `{}` | no |
 | <a name="input_github_roles_teams"></a> [github\_roles\_teams](#input\_github\_roles\_teams) | n/a | `any` | `{}` | no |
 | <a name="input_github_roles_users"></a> [github\_roles\_users](#input\_github\_roles\_users) | n/a | `any` | `{}` | no |
+| <a name="input_identity_group_aliases"></a> [identity\_group\_aliases](#input\_identity\_group\_aliases) | n/a | `any` | `{}` | no |
+| <a name="input_identity_groups"></a> [identity\_groups](#input\_identity\_groups) | n/a | `any` | `{}` | no |
 | <a name="input_jwt_auths"></a> [jwt\_auths](#input\_jwt\_auths) | n/a | `any` | `{}` | no |
 | <a name="input_jwt_roles"></a> [jwt\_roles](#input\_jwt\_roles) | n/a | `any` | `{}` | no |
 | <a name="input_kubernetes_roles"></a> [kubernetes\_roles](#input\_kubernetes\_roles) | n/a | `any` | `{}` | no |
