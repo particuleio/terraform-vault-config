@@ -228,6 +228,7 @@ resource "vault_kubernetes_auth_backend_config" "kubernetes_configs" {
   backend                = vault_auth_backend.auth_backends[each.key].path
   kubernetes_host        = each.value.kubernetes_host
   kubernetes_ca_cert     = try(each.value.kubernetes_ca_cert, null)
+  disable_local_ca_jwt   = try(each.value.disable_local_ca_jwt, null)
   token_reviewer_jwt     = try(each.value.token_reviewer_jwt, null)
   disable_iss_validation = try(each.value.disable_iss_validation, true)
 }
