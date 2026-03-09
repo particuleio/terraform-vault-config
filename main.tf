@@ -181,6 +181,7 @@ resource "vault_kv_secret_v2" "secrets_wo" {
   name                 = try(each.value.name, each.key)
   data_json_wo         = each.value.json
   data_json_wo_version = each.value.version
+  depends_on           = [vault_mount.mounts]
 }
 
 resource "vault_policy" "policy" {
