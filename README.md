@@ -11,14 +11,14 @@ Repository template for Particule's Terraform module.
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.11 |
 | <a name="requirement_vault"></a> [vault](#requirement\_vault) | >= 5 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_vault"></a> [vault](#provider\_vault) | >= 5 |
 
 ## Modules
@@ -28,7 +28,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [vault_audit.audit](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/audit) | resource |
 | [vault_auth_backend.auth_backends](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/auth_backend) | resource |
 | [vault_aws_auth_backend_role.aws](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/aws_auth_backend_role) | resource |
@@ -49,13 +49,15 @@ No modules.
 | [vault_okta_auth_backend.okta](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/okta_auth_backend) | resource |
 | [vault_okta_auth_backend_group.okta](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/okta_auth_backend_group) | resource |
 | [vault_okta_auth_backend_user.okta](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/okta_auth_backend_user) | resource |
+| [vault_pki_secret_backend_role.pki_roles](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/pki_secret_backend_role) | resource |
+| [vault_pki_secret_backend_root_cert.pki_root_certs](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/pki_secret_backend_root_cert) | resource |
 | [vault_policy.policy](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/policy) | resource |
 | [vault_auth_backend.auth_backend_identities](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/auth_backend) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_audits"></a> [audits](#input\_audits) | n/a | `any` | `{}` | no |
 | <a name="input_auth_backends"></a> [auth\_backends](#input\_auth\_backends) | n/a | `any` | `{}` | no |
 | <a name="input_aws_roles"></a> [aws\_roles](#input\_aws\_roles) | n/a | `any` | `{}` | no |
@@ -73,6 +75,8 @@ No modules.
 | <a name="input_okta_groups"></a> [okta\_groups](#input\_okta\_groups) | n/a | `any` | `{}` | no |
 | <a name="input_okta_mfas"></a> [okta\_mfas](#input\_okta\_mfas) | n/a | `any` | `{}` | no |
 | <a name="input_okta_users"></a> [okta\_users](#input\_okta\_users) | n/a | `any` | `{}` | no |
+| <a name="input_pki_roles"></a> [pki\_roles](#input\_pki\_roles) | n/a | `any` | `{}` | no |
+| <a name="input_pki_root_certs"></a> [pki\_root\_certs](#input\_pki\_root\_certs) | n/a | `any` | `{}` | no |
 | <a name="input_policies"></a> [policies](#input\_policies) | n/a | `map(any)` | `{}` | no |
 | <a name="input_secrets"></a> [secrets](#input\_secrets) | n/a | `any` | `{}` | no |
 | <a name="input_secrets_wo"></a> [secrets\_wo](#input\_secrets\_wo) | n/a | `any` | `{}` | no |
@@ -80,7 +84,8 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
+| <a name="output_pki_root_certs"></a> [pki\_root\_certs](#output\_pki\_root\_certs) | n/a |
 | <a name="output_vault_audit"></a> [vault\_audit](#output\_vault\_audit) | n/a |
 | <a name="output_vault_auth_backend"></a> [vault\_auth\_backend](#output\_vault\_auth\_backend) | n/a |
 | <a name="output_vault_aws_auth_backend_role"></a> [vault\_aws\_auth\_backend\_role](#output\_vault\_aws\_auth\_backend\_role) | n/a |

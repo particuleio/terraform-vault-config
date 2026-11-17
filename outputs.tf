@@ -63,3 +63,7 @@ output "vault_kubernetes_auth_backend_role" {
 output "vault_aws_auth_backend_role" {
   value = vault_aws_auth_backend_role.aws
 }
+
+output "pki_root_certs" {
+  value = { for k, v in vault_pki_secret_backend_root_cert.pki_root_certs : k => v.certificate }
+}
